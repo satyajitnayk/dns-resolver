@@ -9,9 +9,8 @@ import (
 )
 
 const (
-	// TypeA is the infamous A record type
-	TypeA   uint16 = 1
-	TypeNS  uint16 = 2
+	TypeA   uint16 = 1 // TypeA is the infamous A record type
+	TypeNS  uint16 = 2 // TypesNS is Nameserver type
 	ClassIn        = 1
 )
 
@@ -159,7 +158,7 @@ func parseRecord(reader *bytes.Reader) DNSRecord {
 	// Depending on the type of DNS record, parse and set the data field.
 	switch recordData.Type {
 	//case TypeA:
-	case TypeNS:
+	case TypeNS: // record type is name server we keep on decoding the name
 		data := decodeName(reader)
 		record.Data = data
 	default:

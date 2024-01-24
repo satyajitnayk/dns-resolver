@@ -2,6 +2,29 @@
 
 A simple DNS resolver using golang.
 
+Original Article https://implement-dns.wizardzines.com/book/exercises.html
+
+https://www.ietf.org/rfc/rfc1035.txt
+
+                Local Host                         |  Foreign
+                                                   |
+    +---------+               +----------+         |  +--------+
+    |         | user queries  |          |queries  |  |        |
+    |  User   |-------------->|          |---------|->|Foreign |
+    | Program |               | Resolver |         |  |  Name  |
+    |         |<--------------|          |<--------|--| Server |
+    |         | user responses|          |responses|  |        |
+    +---------+               +----------+         |  +--------+
+                                |     A            |
+                cache additions |     | references |
+                                V     |            |
+                              +----------+         |
+                              |  cache   |         |
+                              +----------+         |
+
+
+cache has not been implemented yet.
+
 ## Run
 
 ```shell
