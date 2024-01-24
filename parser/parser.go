@@ -82,7 +82,10 @@ func decodeName(reader *bytes.Reader) []byte {
 			// no compressed name read specified number of bytes
 			// find a way to read multiple bytes at once, possible reader.ReadAt()
 			part := make([]byte, length)
-			io.ReadFull(reader, part)
+			_, err := io.ReadFull(reader, part)
+			if err != nil {
+				return nil
+			}
 			name = append(name, part...)
 			// add period('.') to the domain name after adding this domain name part
 			name = append(name, 46)
@@ -112,13 +115,19 @@ func decodeCompressedName(length byte, reader *bytes.Reader) []byte {
 
 	// Moves the reader to the position indicated by the pointer,
 	// effectively jumping to the location of the compressed name.
-	reader.Seek(int64(pointer), io.SeekStart)
+	_, err := reader.Seek(int64(pointer), io.SeekStart)
+	if err != nil {
+		return nil
+	}
 
 	// recursively decode the domain name from the new position
 	result := decodeName(reader)
 
 	// restore the original position of the reader
-	reader.Seek(currentPos, io.SeekStart)
+	_, err = reader.Seek(currentPos, io.SeekStart)
+	if err != nil {
+		return nil
+	}
 
 	return result
 }
@@ -167,7 +176,7 @@ func parseRecord(reader *bytes.Reader) DNSRecord {
 	return record
 }
 
-// takes a byte slice data representing an IPv4 address and
+// ParseIP takes a byte slice data representing an IPv4 address and
 // converts it into a string representation
 func ParseIP(data []byte) string {
 	// Initialize a strings.Builder to efficiently build the IP address string.

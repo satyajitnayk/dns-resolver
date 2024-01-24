@@ -12,7 +12,7 @@ import (
 // root server by Verisign, Inc. https://www.iana.org/domains/root/servers
 const rootNameServer = "198.41.0.4"
 
-// build a DNS Query
+// BuildQuery build a DNS Query
 func BuildQuery(domainName string, recordType uint16) []byte {
 	encodedDomainName := parser.EncodeDomainName(domainName)
 	id := uint16(rand.Intn(65535))

@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// Total size 12 bytes
+// DNSHeader Total size 12 bytes
 type DNSHeader struct {
 	ID             uint16 // 2byte each
 	Flags          uint16
@@ -17,7 +17,7 @@ type DNSHeader struct {
 	NumAdditionals uint16
 }
 
-// convert all field values of a DNS header to big endian two byte integers and concatenates each
+// ToBytes convert all field values of a DNS header to big endian two byte integers and concatenates each
 // field's two byte integer representation.
 func (header DNSHeader) ToBytes() []byte {
 	var byteData bytes.Buffer
@@ -63,7 +63,7 @@ func (question DNSQuestion) ToBytes() []byte {
 	return byteData.Bytes()
 }
 
-// encode domain name to bytes
+// EncodeDomainName encode domain name to bytes
 // input:  www.example.com
 // output: '[3 119 119 119 7 101 120 97 109 112 108 101 3 99 111 109 0]'
 func EncodeDomainName(domainName string) []byte {
