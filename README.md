@@ -24,7 +24,7 @@
 
 ```
  - For more detail understanding about DNS see this [comical PDF about DNS](https://firstvds.ru/habrahabr/evans_6.pdf)
-
+ - Different Record types can be found [here](record-types.md)
 ## Run
 
 ```shell
