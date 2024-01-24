@@ -1,10 +1,9 @@
 # dns-resolver
 
-A simple DNS resolver using golang.
+## A simple DNS resolver using golang.
 
-Original Article https://implement-dns.wizardzines.com/book/exercises.html
-
-https://www.ietf.org/rfc/rfc1035.txt
+ - [Original Article](https://implement-dns.wizardzines.com/book/exercises.html)
+ - [RFC1035](https://www.ietf.org/rfc/rfc1035.txt)
 
                 Local Host                         |  Foreign
                                                    |
@@ -23,7 +22,7 @@ https://www.ietf.org/rfc/rfc1035.txt
                               +----------+         |
 
 
-cache has not been implemented yet.
+ - For more detail understanding about DNS see this [comical PDF about DNS](https://firstvds.ru/habrahabr/evans_6.pdf)
 
 ## Run
 
