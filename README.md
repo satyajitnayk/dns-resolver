@@ -5,6 +5,7 @@
  - [Original Article](https://implement-dns.wizardzines.com/book/exercises.html)
  - [RFC1035](https://www.ietf.org/rfc/rfc1035.txt)
 
+```
                 Local Host                         |  Foreign
                                                    |
     +---------+               +----------+         |  +--------+
@@ -21,7 +22,7 @@
                               |  cache   |         |
                               +----------+         |
 
-
+```
  - For more detail understanding about DNS see this [comical PDF about DNS](https://firstvds.ru/habrahabr/evans_6.pdf)
 
 ## Run
